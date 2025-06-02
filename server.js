@@ -47,9 +47,9 @@ app.get('/join/:token', async (req, res) => {
   }
 });
 
-// Root route (redirect to Framer homepage)
+// Root route (status message)
 app.get('/', (req, res) => {
-  res.redirect('https://www.zovia.studio');
+  res.send('Zovia Invite Server is running on invite.zovia.studio');
 });
 
 app.listen(port, () => {
