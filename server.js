@@ -47,9 +47,9 @@ app.get('/join/:token', async (req, res) => {
   }
 });
 
-// Root route (optional sanity check)
+// Root route (redirect to Framer homepage)
 app.get('/', (req, res) => {
-  res.send('Zovia Web Server is running!');
+  res.redirect('https://www.zovia.studio');
 });
 
 app.listen(port, () => {
