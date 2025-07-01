@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><%= title %> - Zovia</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            background: #1E1E1E;
+            color: #F3F1EC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        
+        .error-container {
+            background: rgba(243, 241, 236, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(243, 241, 236, 0.1);
+            border-radius: 20px;
+            padding: 40px 32px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .error-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            opacity: 0.6;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 16px;
+            opacity: 0.7;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+        
+        .home-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: rgba(243, 241, 236, 0.1);
+            border: 1px solid rgba(243, 241, 236, 0.2);
+            border-radius: 10px;
+            color: #F3F1EC;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .home-button:hover {
+            background: rgba(243, 241, 236, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <svg class="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        
+        <h1><%= title %></h1>
+        <p><%= message %></p>
+        
+        <a href="https://zovia.studio" class="home-button">Visit Zovia</a>
+    </div>
+</body>
+</html>
