@@ -61,27 +61,6 @@
             z-index: 1;
         }
         
-        /* Logo section */
-        .logo-section {
-            text-align: center;
-            margin-bottom: 40px;
-            animation: fadeInDown 0.8s ease-out;
-        }
-        
-        .logo-container {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 16px;
-            position: relative;
-        }
-        
-        .logo {
-            width: 100%;
-            height: 100%;
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
-        }
-        
         /* Frosted glass container */
         .frosted-container {
             background: rgba(243, 241, 236, 0.05);
@@ -406,21 +385,19 @@
     <div class="background"></div>
     
     <div class="container">
-        <!-- Logo Section -->
-        <div class="logo-section">
-            <div class="logo-container">
-                <img src="/images/zovia-logo.svg" alt="Zovia" class="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size: 32px; font-weight: bold;\'>Z</div>'">
-            </div>
-        </div>
-        
         <!-- Invite Card -->
         <div class="frosted-container invite-card">
             <div class="space-icon">
-                <%= spaceName.charAt(0) %>
+                <img src="/images/zovia-logo.svg" alt="Zovia" style="width: 40px; height: 40px; filter: brightness(0) invert(1); opacity: 0.9;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size: 32px; font-weight: bold;\'>Z</div>'">
             </div>
             
             <div class="invite-label">You're invited to join</div>
             <h1 class="space-name"><%= spaceName %></h1>
+            <% if (ownerName && ownerName !== 'Space Admin') { %>
+                <p style="text-align: center; opacity: 0.7; margin-bottom: 8px; font-size: 14px;">
+                    by <%= ownerName %>
+                </p>
+            <% } %>
             
             <% if (spaceDescription) { %>
                 <p style="text-align: center; opacity: 0.7; margin-bottom: 24px; font-size: 15px;">
