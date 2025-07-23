@@ -243,10 +243,11 @@
         
         .android-coming-soon {
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 48px; /* Match Apple Store button height */
-            padding: 0 20px;
+            width: 150px; /* Fixed width to match Apple button */
             background: linear-gradient(
                 135deg,
                 rgba(255, 255, 255, 0.08) 0%,
@@ -256,9 +257,22 @@
             border: 0.5px solid rgba(230, 243, 255, 0.15); /* pearGlow */
             border-radius: 8px; /* Match Apple Store button radius */
             color: rgba(184, 212, 234, 0.8); /* foamWhite */
-            font-size: 14px;
-            font-weight: 500;
-            gap: 8px;
+            text-decoration: none;
+            padding: 0 16px;
+        }
+        
+        .android-coming-soon .main-text {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .android-coming-soon .sub-text {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: -2px;
         }
         
         /* Loading and success states */
@@ -404,19 +418,23 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Success toast */
+        /* Success toast - darker ecosystem colors */
         .success-toast {
             position: fixed;
             bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: rgba(0, 255, 127, 0.9); /* neonTetra */
+            background: linear-gradient(135deg, #243038 0%, #2E3A44 100%); /* coralBase gradient */
+            border: 1px solid #00CED144; /* parrotfish border */
             backdrop-filter: blur(10px);
-            color: #0A0F14; /* abyssal for contrast */
+            color: #E6F3FF; /* pearGlow */
             padding: 16px 24px;
             border-radius: 12px;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 255, 127, 0.3);
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.3),
+                0 1px 3px rgba(0, 206, 209, 0.2);
             opacity: 0;
             transition: all 0.3s ease;
         }
@@ -511,10 +529,13 @@
                     <img src="/images/apple_store.svg" alt="Download on the App Store" />
                 </a>
                 <div class="android-coming-soon">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                    </svg>
-                    Android Coming Soon
+                    <div class="main-text">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                        </svg>
+                        Android
+                    </div>
+                    <div class="sub-text">Coming Soon</div>
                 </div>
             </div>
         </div>
@@ -568,8 +589,13 @@
                         if (!appOpened && (endTime - startTime) < 3000) {
                             // Update UI to show download option
                             loadingState.classList.remove('active');
-                            successToast.textContent = '📲 Zistil app not found. Tap below to download.';
+                            successToast.textContent = '📲 Zistil app not found. Tap App Store link to download.';
                             successToast.classList.add('show');
+                            
+                            // Auto-hide toast after 5 seconds
+                            setTimeout(() => {
+                                successToast.classList.remove('show');
+                            }, 5000);
                             
                             // Change button to download
                             button.textContent = 'Download Zistil from App Store';
@@ -594,6 +620,11 @@
                         successToast.textContent = '🚀 Android version coming soon!';
                         successToast.classList.add('show');
                         button.style.display = 'block';
+                        
+                        // Auto-hide after 5 seconds
+                        setTimeout(() => {
+                            successToast.classList.remove('show');
+                        }, 5000);
                     }, 1000);
                     
                 } else {
@@ -603,6 +634,11 @@
                         successToast.textContent = '📱 Please visit this link on your mobile device';
                         successToast.classList.add('show');
                         button.style.display = 'block';
+                        
+                        // Auto-hide after 5 seconds
+                        setTimeout(() => {
+                            successToast.classList.remove('show');
+                        }, 5000);
                     }, 1000);
                 }
             }, 1500);
