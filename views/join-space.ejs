@@ -22,13 +22,13 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-            color: #F3F1EC;
+            color: #E6F3FF; /* pearGlow */
             overflow-x: hidden;
             position: relative;
-            background: #476072;
+            background: #0A0F14; /* abyssal */
         }
         
-        /* Subtle gradient background */
+        /* Coral reef depths gradient background */
         .background {
             position: fixed;
             top: 0;
@@ -36,10 +36,10 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            background: linear-gradient(135deg, #476072 0%, #3a5160 50%, #2e414e 100%);
+            background: linear-gradient(135deg, #0A0F14 0%, #121820 50%, #1A222C 100%); /* abyssal → deepCurrent → midWater */
         }
         
-        /* Decorative elements */
+        /* Decorative sunlight rays effect */
         .background::after {
             content: '';
             position: absolute;
@@ -47,7 +47,7 @@
             right: -50%;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(243, 241, 236, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 231, 102, 0.03) 0%, transparent 70%); /* sunbeamGold with low opacity */
             transform: translate(50%, 50%);
         }
         
@@ -109,7 +109,7 @@
         
         .invite-label {
             font-size: 14px;
-            opacity: 0.7;
+            color: rgba(184, 212, 234, 0.8); /* foamWhite */
             margin-bottom: 8px;
             text-align: center;
             font-weight: 500;
@@ -121,6 +121,7 @@
             text-align: center;
             margin-bottom: 16px;
             line-height: 1.2;
+            color: #E6F3FF; /* pearGlow */
         }
         
         /* Space details */
@@ -142,7 +143,7 @@
             align-items: center;
             margin-bottom: 16px;
             font-size: 15px;
-            opacity: 0.8;
+            color: rgba(184, 212, 234, 0.9); /* foamWhite */
         }
         
         .detail-item:last-child {
@@ -156,11 +157,11 @@
             opacity: 0.7;
         }
         
-        /* Primary button - Zovia accent color */
+        /* Primary button - Coral reef accent */
         .primary-button {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%); /* seaFan → mandarin */
             color: #FFFFFF;
             border: none;
             border-radius: 16px;
@@ -171,7 +172,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 
-                0 4px 12px rgba(37, 99, 235, 0.3),
+                0 4px 12px rgba(255, 105, 180, 0.3),
                 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
@@ -234,19 +235,21 @@
         .android-coming-soon {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
+            justify-content: center;
+            height: 48px; /* Match Apple Store button height */
+            padding: 0 20px;
             background: linear-gradient(
                 135deg,
                 rgba(255, 255, 255, 0.08) 0%,
                 rgba(255, 255, 255, 0.05) 100%
             );
             backdrop-filter: blur(10px);
-            border: 0.5px solid rgba(243, 241, 236, 0.15);
-            border-radius: 12px;
-            color: rgba(243, 241, 236, 0.7);
+            border: 0.5px solid rgba(230, 243, 255, 0.15); /* pearGlow */
+            border-radius: 8px; /* Match Apple Store button radius */
+            color: rgba(184, 212, 234, 0.8); /* foamWhite */
             font-size: 14px;
             font-weight: 500;
+            gap: 8px;
         }
         
         /* Loading and success states */
@@ -285,7 +288,7 @@
         }
         
         .divider span {
-            background: #476072;
+            background: #1A222C; /* midWater */
             padding: 0 16px;
             font-size: 13px;
             opacity: 0.6;
@@ -302,7 +305,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: rgba(243, 241, 236, 0.1);
+            background: rgba(230, 243, 255, 0.1); /* pearGlow */
             transform: translateY(-50%);
         }
         
@@ -403,13 +406,13 @@
             bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: rgba(76, 175, 80, 0.9);
+            background: rgba(0, 255, 127, 0.9); /* neonTetra */
             backdrop-filter: blur(10px);
-            color: white;
+            color: #0A0F14; /* abyssal for contrast */
             padding: 16px 24px;
             border-radius: 12px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 255, 127, 0.3);
             opacity: 0;
             transition: all 0.3s ease;
         }
@@ -538,18 +541,22 @@
                     const token = "<%= inviteToken %>";
                     window.location.href = `zovia://join/${token}`;
                     
-                    // Fallback to app stores after delay
+                    // Always restore button after a delay (in case app didn't open)
                     setTimeout(() => {
-                        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                        if (isIOS) {
-                            window.location.href = 'https://apps.apple.com/us/app/zistil-store-pack-protect/id6747452682';
-                        } else {
-                            // Android not yet available, stay on the page
-                            button.style.display = 'block';
-                            loadingState.classList.remove('active');
-                            successToast.classList.remove('show');
-                        }
-                    }, 2500);
+                        button.style.display = 'block';
+                        loadingState.classList.remove('active');
+                        successToast.classList.remove('show');
+                        
+                        // If still on this page after 1 second, show app store options
+                        setTimeout(() => {
+                            if (document.visibilityState === 'visible') {
+                                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                                if (isIOS && confirm('Zistil app not found. Would you like to download it from the App Store?')) {
+                                    window.location.href = 'https://apps.apple.com/us/app/zistil-store-pack-protect/id6747452682';
+                                }
+                            }
+                        }, 1000);
+                    }, 3000);
                 }, 1000);
             }, 1500);
         }
