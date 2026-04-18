@@ -8,14 +8,28 @@ const PARSE_REST_KEY = '1NZ4ZGOHphuZxRiC1h48XblSv9I7X7VgWhiky0lO';
 const PARSE_SERVER_URL = 'https://parseapi.back4app.com';
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 // View engine setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Serve static files from public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Apple requires apple-app-site-association served with application/json.
+// The file has no extension, so express.static would serve it as octet-stream.
+// Register BEFORE express.static so this handler wins. `dotfiles: 'allow'`
+// is required because the path contains `.well-known`; `sendFile` otherwise
+// refuses dotted segments.
+app.get('/.well-known/apple-app-site-association', (req, res) => {
+  res.set('Content-Type', 'application/json');
+  res.sendFile(
+    path.join(__dirname, 'public/.well-known/apple-app-site-association'),
+    { dotfiles: 'allow' },
+  );
+});
+
+// Serve static files from public directory.
+// dotfiles:'allow' is required so /.well-known/* (dotted dir) is served —
+// default 'ignore' 404s on assetlinks.json.
+app.use(express.static(path.join(__dirname, 'public'), { dotfiles: 'allow' }));
 
 // Route for join links
 app.get('/join/:token', async (req, res) => {
@@ -105,6 +119,10 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy', timestamp: new Date().toISOString() });
 });
 
+// Local dev convenience. Production runs on Cloudflare Pages Functions —
+// see functions/join/[token].js. `npm run dev` (wrangler pages dev) is the
+// recommended local flow since it matches the deployed runtime.
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Zovia web server running at http://localhost:${port}`);
+  console.log(`Zovia web server (local dev only) at http://localhost:${port}`);
 });

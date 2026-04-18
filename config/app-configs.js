@@ -11,7 +11,17 @@ const APP_CONFIGS = {
     androidUrl: 'https://play.google.com/store/apps/details?id=studio.zovia.zentry.android',
     description: 'Store, pack & protect your items with spatial intelligence'
   },
-  
+
+  'zupply': {
+    id: 'zupply',
+    displayName: 'Zupply',
+    scheme: 'zovia-zupply',
+    androidPackage: 'studio.zovia.zupply.android',
+    iosUrl: 'https://apps.apple.com/us/app/zupply-smart-grocery-list/id6751449193',
+    androidUrl: 'https://play.google.com/store/apps/details?id=studio.zovia.zupply.android',
+    description: 'Smart grocery list — shopping intelligence that learns from your receipts'
+  },
+
   'zatch': {
     id: 'zatch',
     displayName: 'Zatch',
@@ -89,12 +99,14 @@ function detectAppId(options = {}) {
   if (userAgent) {
     if (userAgent.includes('Zistil')) return 'zistil';
     if (userAgent.includes('Zatch')) return 'zatch';
+    if (userAgent.includes('Zupply')) return 'zupply';
   }
-  
+
   // 4. Referer URL detection
   if (referer) {
     if (referer.includes('zistil')) return 'zistil';
     if (referer.includes('zatch')) return 'zatch';
+    if (referer.includes('zupply')) return 'zupply';
   }
   
   // 5. Default fallback

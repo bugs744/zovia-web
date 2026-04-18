@@ -1,0 +1,9 @@
+# Apple rejects apple-app-site-association if Content-Type isn't application/json.
+# The file is extensionless so Cloudflare's default MIME detection would
+# serve it as text/plain or octet-stream.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+
+# Keep assetlinks.json explicitly JSON (Cloudflare already does this, belt-and-suspenders).
+/.well-known/assetlinks.json
+  Content-Type: application/json

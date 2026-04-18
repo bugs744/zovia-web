@@ -1,0 +1,19 @@
+# Cloudflare Pages configuration.
+# Pages project name is set in the Cloudflare dashboard and passed via
+# `wrangler pages deploy --project-name zovia-invite` (see package.json).
+
+name = "zovia-invite"
+compatibility_date = "2024-09-01"
+
+# nodejs_compat lets `eta` and other npm packages import `node:*` built-ins
+# in the Workers runtime.
+compatibility_flags = ["nodejs_compat"]
+
+# Pages-specific settings
+[pages]
+# No additional options needed; defaults work for our setup.
+
+# Build output directory (static files). Pages Functions are auto-discovered
+# from the ./functions/ directory.
+[site]
+bucket = "./public"

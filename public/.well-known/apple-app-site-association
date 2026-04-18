@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["RX8B46BS6H.studio.zovia.zupply"],
+        "components": [
+          {
+            "/": "/join/*",
+            "comment": "Zupply space invite links"
+          }
+        ]
+      }
+    ]
+  }
+}

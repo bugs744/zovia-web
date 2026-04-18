@@ -1,0 +1,15 @@
+# Node dependencies — installed fresh from package-lock on every build.
+# Previously tracked; untracked as of the Cloudflare Pages migration
+# because wrangler/workerd binaries exceed GitHub's 100MB file limit.
+node_modules/
+
+# Wrangler local dev cache — regenerated on every `wrangler pages dev`
+.wrangler/
+.dev.vars
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/

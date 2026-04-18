@@ -4,6 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "build": "node scripts/build-templates.js",
+    "dev": "npm run build && wrangler pages dev public --compatibility-date=2024-09-01",
+    "deploy": "npm run build && wrangler pages deploy public --project-name zovia-invite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,5 +17,8 @@
     "axios": "^1.9.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.83.0"
   }
 }
