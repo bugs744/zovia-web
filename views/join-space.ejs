@@ -11,7 +11,16 @@
     <meta property="og:image" content="/images/zovia-og.png" />
     <meta property="og:url" content="https://invite.zovia.studio/join/<%= inviteToken %>" />
     <meta name="twitter:card" content="summary_large_image" />
-    
+
+    <!-- Per-app brand accent, wired from config/app-configs.js
+         (mirrors ZAppSignatures.<app>.darkModeColor / lightModeColor). -->
+    <style>
+        :root {
+            --app-primary: <%= appConfig.primaryColor || '#FF69B4' %>;
+            --app-primary-deep: <%= appConfig.primaryColorDeep || '#FF1493' %>;
+        }
+    </style>
+
     <style>
         * {
             margin: 0;
@@ -105,7 +114,7 @@
         .space-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%); /* seaFan gradient */
+            background: linear-gradient(135deg, var(--app-primary) 0%, var(--app-primary-deep) 100%);
             border-radius: 16px;
             margin: 0 auto 16px;
             display: flex;
@@ -115,8 +124,8 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: -1px;
-            box-shadow: 
-                0 4px 12px rgba(255, 105, 180, 0.3),
+            box-shadow:
+                0 4px 12px color-mix(in srgb, var(--app-primary) 30%, transparent),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         
@@ -165,11 +174,11 @@
             opacity: 0.7;
         }
         
-        /* Primary button - Coral reef accent, smaller */
+        /* Primary button — per-app brand accent */
         .primary-button {
             width: 100%;
             padding: 14px 20px;
-            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%); /* seaFan → mandarin */
+            background: linear-gradient(135deg, var(--app-primary) 0%, var(--app-primary-deep) 100%);
             color: #FFFFFF;
             border: none;
             border-radius: 12px;
@@ -179,8 +188,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                0 4px 12px rgba(255, 105, 180, 0.3),
+            box-shadow:
+                0 4px 12px color-mix(in srgb, var(--app-primary) 30%, transparent),
                 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
