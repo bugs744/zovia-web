@@ -12,12 +12,14 @@
     <meta property="og:url" content="https://invite.zovia.studio/join/<%= inviteToken %>" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Per-app brand accent, wired from config/app-configs.js
-         (mirrors ZAppSignatures.<app>.darkModeColor / lightModeColor). -->
+    <!-- Per-app brand accent, sourced from ZoviaAppVersions.primaryColor.
+         The "lift" variant is computed client-side via color-mix so the
+         gradient has depth without needing a second color in the DB. -->
     <style>
         :root {
             --app-primary: <%= appConfig.primaryColor || '#FF69B4' %>;
-            --app-primary-deep: <%= appConfig.primaryColorDeep || '#FF1493' %>;
+            --app-primary-lift: color-mix(in srgb, var(--app-primary), white 22%);
+            --app-primary-deep: color-mix(in srgb, var(--app-primary), black 18%);
         }
     </style>
 
@@ -114,7 +116,7 @@
         .space-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--app-primary) 0%, var(--app-primary-deep) 100%);
+            background: linear-gradient(135deg, var(--app-primary-lift) 0%, var(--app-primary-deep) 100%);
             border-radius: 16px;
             margin: 0 auto 16px;
             display: flex;
@@ -178,7 +180,7 @@
         .primary-button {
             width: 100%;
             padding: 14px 20px;
-            background: linear-gradient(135deg, var(--app-primary) 0%, var(--app-primary-deep) 100%);
+            background: linear-gradient(135deg, var(--app-primary-lift) 0%, var(--app-primary-deep) 100%);
             color: #FFFFFF;
             border: none;
             border-radius: 12px;

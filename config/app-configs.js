@@ -2,58 +2,34 @@
 // This maps app IDs to their specific configurations
 
 const APP_CONFIGS = {
-  // primaryColor / primaryColorDeep mirror ZAppSignatures.<app>.darkModeColor
-  // and .lightModeColor in packages/z_design/lib/theme/z_app_signatures.dart.
-  // The landing page uses them as a vibrant→deep gradient for the logo
-  // badge and primary "Join Space" CTA. Landing page is dark-bg, so the
-  // vibrant (darkModeColor) is the primary hue.
+  // displayName, primaryColor, store URLs, description come from the
+  // ZoviaAppVersions Parse class at request time — see functions/join/
+  // [token].js. Only platform-level wiring (URL scheme, Android package
+  // name) is hardcoded here since those aren't in the DB.
   'zistil': {
     id: 'zistil',
-    displayName: 'Zistil',
     scheme: 'zistil',
     androidPackage: 'studio.zovia.zentry.android',
-    iosUrl: 'https://apps.apple.com/us/app/zistil-store-pack-protect/id6747452682',
-    androidUrl: 'https://play.google.com/store/apps/details?id=studio.zovia.zentry.android',
-    description: 'Store, pack & protect your items with spatial intelligence',
-    primaryColor: '#FF7B6B',      // Coral Reef
-    primaryColorDeep: '#E05B4A'
   },
 
   'zupply': {
     id: 'zupply',
-    displayName: 'Zupply',
     scheme: 'zovia-zupply',
-    androidPackage: 'studio.zovia.zupply.android',
-    iosUrl: 'https://apps.apple.com/us/app/zupply-smart-grocery-list/id6751449193',
-    androidUrl: 'https://play.google.com/store/apps/details?id=studio.zovia.zupply.android',
-    description: 'Smart grocery list — shopping intelligence that learns from your receipts',
-    primaryColor: '#B4D429',      // Kiwi
-    primaryColorDeep: '#8FB021'
+    androidPackage: 'studio.zovia.zupply',
   },
 
   'zatch': {
     id: 'zatch',
-    displayName: 'Zatch',
     scheme: 'zatch',
     androidPackage: 'studio.zovia.zatch.android',
-    iosUrl: '', // Will be added when available
-    androidUrl: '', // Will be added when available
-    description: 'Social sports scheduling for friend groups',
-    primaryColor: '#3498DB',      // Generic Ocean (no assigned signature yet)
-    primaryColorDeep: '#2874A6'
   },
 
-  // Default fallback config
+  // Fallback for unknown apps. ZoviaAppVersions still provides display data
+  // when the app is detected; this only kicks in when detectAppId fails.
   'default': {
     id: 'zovia',
-    displayName: 'Zovia',
     scheme: 'zovia',
     androidPackage: 'studio.zovia.app.android',
-    iosUrl: 'https://apps.apple.com/us/app/zistil-store-pack-protect/id6747452682', // Fallback to Zistil
-    androidUrl: 'https://play.google.com/store/apps/details?id=studio.zovia.zentry.android', // Fallback to Zistil
-    description: 'Collaborative productivity platform',
-    primaryColor: '#3498DB',      // Generic Ocean
-    primaryColorDeep: '#2874A6'
   }
 };
 
