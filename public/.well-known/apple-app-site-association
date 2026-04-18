@@ -2,11 +2,18 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["RX8B46BS6H.studio.zovia.zupply"],
+        "appIDs": [
+          "RX8B46BS6H.studio.zovia.zistil.app",
+          "RX8B46BS6H.studio.zovia.zots",
+          "RX8B46BS6H.studio.zovia.zyve",
+          "RX8B46BS6H.studio.zovia.zupply",
+          "RX8B46BS6H.studio.zovia.zynq",
+          "RX8B46BS6H.studio.zovia.zarden"
+        ],
         "components": [
           {
             "/": "/join/*",
-            "comment": "Zupply space invite links"
+            "comment": "Zovia space invite links"
           }
         ]
       }

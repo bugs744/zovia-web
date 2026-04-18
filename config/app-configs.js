@@ -8,14 +8,38 @@ const APP_CONFIGS = {
   // name) is hardcoded here since those aren't in the DB.
   'zistil': {
     id: 'zistil',
-    scheme: 'zistil',
-    androidPackage: 'studio.zovia.zentry.android',
+    scheme: 'zovia-zistil',
+    androidPackage: 'studio.zovia.zentry.android',  // historical, locked to Play Console
+  },
+
+  'zots': {
+    id: 'zots',
+    scheme: 'zovia-zots',
+    androidPackage: 'studio.zovia.zots',
+  },
+
+  'zyve': {
+    id: 'zyve',
+    scheme: 'zovia-zyve',
+    androidPackage: 'studio.zovia.zyve',
   },
 
   'zupply': {
     id: 'zupply',
     scheme: 'zovia-zupply',
     androidPackage: 'studio.zovia.zupply',
+  },
+
+  'zynq': {
+    id: 'zynq',
+    scheme: 'zovia-zynq',
+    androidPackage: 'studio.zovia.zynq',
+  },
+
+  'zarden': {
+    id: 'zarden',
+    scheme: 'zovia-zarden',
+    androidPackage: 'studio.zovia.zarden',
   },
 
   'zatch': {
@@ -87,15 +111,23 @@ function detectAppId(options = {}) {
   // 3. User agent detection (for mobile apps)
   if (userAgent) {
     if (userAgent.includes('Zistil')) return 'zistil';
-    if (userAgent.includes('Zatch')) return 'zatch';
+    if (userAgent.includes('Zots')) return 'zots';
+    if (userAgent.includes('Zyve')) return 'zyve';
     if (userAgent.includes('Zupply')) return 'zupply';
+    if (userAgent.includes('Zynq')) return 'zynq';
+    if (userAgent.includes('Zarden')) return 'zarden';
+    if (userAgent.includes('Zatch')) return 'zatch';
   }
 
   // 4. Referer URL detection
   if (referer) {
     if (referer.includes('zistil')) return 'zistil';
-    if (referer.includes('zatch')) return 'zatch';
+    if (referer.includes('zots')) return 'zots';
+    if (referer.includes('zyve')) return 'zyve';
     if (referer.includes('zupply')) return 'zupply';
+    if (referer.includes('zynq')) return 'zynq';
+    if (referer.includes('zarden')) return 'zarden';
+    if (referer.includes('zatch')) return 'zatch';
   }
   
   // 5. Default fallback

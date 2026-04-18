@@ -3,7 +3,62 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
+      "package_name": "studio.zovia.zentry.android",
+      "sha256_cert_fingerprints": [
+        "E8:44:14:AF:25:B5:B5:6B:63:95:E8:D1:C3:13:19:77:BB:50:D4:01:5F:0D:39:06:88:DA:16:F0:B9:BC:9F:CE",
+        "3F:4E:71:E7:9E:91:7C:75:B6:A6:C1:A6:77:19:F5:8B:A1:25:6F:8B:81:E1:1B:8C:29:19:9C:54:D0:CC:6E:4F"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "studio.zovia.zots",
+      "sha256_cert_fingerprints": [
+        "E8:44:14:AF:25:B5:B5:6B:63:95:E8:D1:C3:13:19:77:BB:50:D4:01:5F:0D:39:06:88:DA:16:F0:B9:BC:9F:CE",
+        "3F:4E:71:E7:9E:91:7C:75:B6:A6:C1:A6:77:19:F5:8B:A1:25:6F:8B:81:E1:1B:8C:29:19:9C:54:D0:CC:6E:4F"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "studio.zovia.zyve",
+      "sha256_cert_fingerprints": [
+        "E8:44:14:AF:25:B5:B5:6B:63:95:E8:D1:C3:13:19:77:BB:50:D4:01:5F:0D:39:06:88:DA:16:F0:B9:BC:9F:CE",
+        "3F:4E:71:E7:9E:91:7C:75:B6:A6:C1:A6:77:19:F5:8B:A1:25:6F:8B:81:E1:1B:8C:29:19:9C:54:D0:CC:6E:4F"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
       "package_name": "studio.zovia.zupply",
+      "sha256_cert_fingerprints": [
+        "E8:44:14:AF:25:B5:B5:6B:63:95:E8:D1:C3:13:19:77:BB:50:D4:01:5F:0D:39:06:88:DA:16:F0:B9:BC:9F:CE",
+        "3F:4E:71:E7:9E:91:7C:75:B6:A6:C1:A6:77:19:F5:8B:A1:25:6F:8B:81:E1:1B:8C:29:19:9C:54:D0:CC:6E:4F"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "studio.zovia.zynq",
+      "sha256_cert_fingerprints": [
+        "E8:44:14:AF:25:B5:B5:6B:63:95:E8:D1:C3:13:19:77:BB:50:D4:01:5F:0D:39:06:88:DA:16:F0:B9:BC:9F:CE",
+        "3F:4E:71:E7:9E:91:7C:75:B6:A6:C1:A6:77:19:F5:8B:A1:25:6F:8B:81:E1:1B:8C:29:19:9C:54:D0:CC:6E:4F"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "studio.zovia.zarden",
       "sha256_cert_fingerprints": [
         "E8:44:14:AF:25:B5:B5:6B:63:95:E8:D1:C3:13:19:77:BB:50:D4:01:5F:0D:39:06:88:DA:16:F0:B9:BC:9F:CE",
         "3F:4E:71:E7:9E:91:7C:75:B6:A6:C1:A6:77:19:F5:8B:A1:25:6F:8B:81:E1:1B:8C:29:19:9C:54:D0:CC:6E:4F"
